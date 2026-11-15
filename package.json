@@ -1,0 +1,45 @@
+{
+  "name": "modelbrain-rag",
+  "version": "0.1.0",
+  "description": "Open-source document search (RAG) server for ModelBrain. A local HTTP API over the ModelBrain app already installed on your computer; does not bundle ModelBrain itself.",
+  "bin": {
+    "modelbrain-rag": "bin/modelbrain-rag.js"
+  },
+  "main": "lib/server.js",
+  "files": [
+    "bin",
+    "lib",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "author": "Matthew Firth <hello@modelbrain.net> (https://modelbrain.net)",
+  "homepage": "https://modelbrain.net/docs/rag-server.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ModelBrain/modelbrain-rag.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ModelBrain/modelbrain-rag/issues"
+  },
+  "keywords": [
+    "rag",
+    "retrieval",
+    "document-search",
+    "modelbrain",
+    "local-first",
+    "mcp"
+  ],
+  "os": [
+    "darwin",
+    "win32",
+    "linux"
+  ],
+  "scripts": {
+    "test": "node --test"
+  }
+}

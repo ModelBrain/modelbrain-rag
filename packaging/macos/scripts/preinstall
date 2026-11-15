@@ -1,0 +1,7 @@
+#!/bin/bash
+# ModelBrain on macOS needs Apple Silicon, and so does this add-on.
+if [ "$(/usr/bin/uname -m)" != "arm64" ]; then
+  echo "ModelBrain RAG needs a Mac with Apple Silicon." >&2
+  exit 1
+fi
+exit 0

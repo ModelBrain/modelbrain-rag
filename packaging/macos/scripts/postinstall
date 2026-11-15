@@ -1,0 +1,30 @@
+#!/bin/bash
+# Runs as root after the files are in place. Everything that belongs to the
+# person is done as that person, never as root. What it prints goes to the
+# installer's log (/var/log/install.log).
+set -u
+
+DIR="/Library/Application Support/ModelBrain RAG"
+# Readable and runnable by the people who use this Mac, not only by root.
+/bin/chmod -R a+rX "$DIR"
+/bin/ln -sfh "$DIR/node-arm64" "$DIR/node"
+
+WHO="$(/usr/bin/stat -f%Su /dev/console)"
+case "$WHO" in
+  ""|root|loginwindow|_mbsetupuser)
+    echo "ModelBrain RAG: nobody is signed in, so it was not started. Double-click \"Open ModelBrain RAG\" in $DIR to finish."
+    exit 0
+    ;;
+esac
+ID="$(/usr/bin/id -u "$WHO")"
+as_user() {
+  # -H gives the person's own home folder, whoever started the installer.
+  /bin/launchctl asuser "$ID" /usr/bin/sudo -H -u "$WHO" "$@"
+}
+
+if ! as_user "$DIR/node" "$DIR/app/bin/modelbrain-rag.js" service install; then
+  echo "ModelBrain RAG: could not set it to start at sign-in for $WHO. Double-click \"Open ModelBrain RAG\" in $DIR to try again."
+  exit 0
+fi
+as_user "$DIR/node" "$DIR/app/bin/modelbrain-rag.js" open || echo "ModelBrain RAG: installed and started, but the web page could not be opened."
+exit 0
