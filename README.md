@@ -25,7 +25,7 @@ It does not write answers. Pass the passages to the model of your choice.
 
 ## Install on a Mac without a command line
 
-Double-click `ModelBrain RAG.pkg`. It puts the program in `/Library/Application Support/ModelBrain RAG`, sets it to start when you sign in, and opens the web page, where you choose the first administrator username and password. The Status tab then shows the one step left: adding the documents folder in ModelBrain.
+Double-click the installer, `ModelBrain-RAG-<version>.pkg`. It puts the program in `/Library/Application Support/ModelBrain RAG`, sets it to start when you sign in, and opens the web page, where you choose the first administrator username and password. The Status tab then shows the one step left: adding the documents folder in ModelBrain.
 
 To open the page again later, double-click `Open ModelBrain RAG.command` in that folder (it also sets things up for a second account on the same Mac). To remove it, double-click `Uninstall ModelBrain RAG.command`. Documents and settings are left alone.
 

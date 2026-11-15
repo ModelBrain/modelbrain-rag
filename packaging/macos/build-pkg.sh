@@ -1,5 +1,5 @@
 #!/bin/bash
-# Builds the macOS installer: "ModelBrain RAG.pkg".
+# Builds the macOS installer: dist/ModelBrain-RAG-<version>.pkg
 #
 # Run on a Mac, from anywhere:
 #   packaging/macos/build-pkg.sh
@@ -79,7 +79,7 @@ UNSIGNED="$WORK/unsigned.pkg"
 pkgbuild --root "$WORK/payload" --identifier net.modelbrain.rag --version "$VERSION" \
   --scripts "$HERE/scripts" --install-location "$INSTALL_DIR" "$UNSIGNED"
 
-PKG="$OUT/ModelBrain RAG $VERSION.pkg"
+PKG="$OUT/ModelBrain-RAG-$VERSION.pkg"
 if [ -n "${INSTALLER_IDENTITY:-}" ]; then
   productsign --sign "$INSTALLER_IDENTITY" "$UNSIGNED" "$PKG"
   if [ -n "${NOTARY_PROFILE:-}" ]; then
